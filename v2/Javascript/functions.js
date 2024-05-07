@@ -1,22 +1,22 @@
 function getChapters(){
-	var tblChapter = document.createElement('table');
-		tblChapter.className="tblchapters"
-	var tbodyChapter = document.createElement('tbody');	
-	var trChapter = document.createElement('tr');
+	const tblChapter = document.createElement('table');
+		tblChapter.className="tblChapters"
+	const tbodyChapter = document.createElement('tbody');	
+	const trChapter = document.createElement('tr');
 	
-	for (chapter in MARDEK) //"const" or "let" variable declaration makes it so the value doesn't change for the eventListener
+	for (let chapter in MARDEK) //"const" or "let" variable declaration makes it so the value doesn't change for the eventListener
 	{
 		const objChapter=MARDEK[chapter]
 		console.info(chapter)
 
-		var tdChapter = document.createElement('td');
-		var aChapter = document.createElement('a');
+		let tdChapter = document.createElement('td');
+		let aChapter = document.createElement('a');
 			aChapter.id=chapter;
 			aChapter.addEventListener('click', function () {
 				getCharacters(objChapter); //Event listeners to change chapters
 			});
 			
-		var imgChapter = document.createElement('img');
+		let imgChapter = document.createElement('img');
 			imgChapter.src = "Images/Chapters/"+chapter+".png"
 			imgChapter.alt = chapter;
 		
@@ -26,31 +26,31 @@ function getChapters(){
 	}
 	tbodyChapter.appendChild(trChapter)
 	tblChapter.appendChild(tbodyChapter)
-	var loc = document.getElementById("divChapter")
+	let loc = document.getElementById("divChapter")
 	loc.appendChild(tblChapter)
 }
 
 function getCharacters(chapter){
 	
 	//console.info(chapter)
-	var tblCharacter = document.createElement('table');
+	let tblCharacter = document.createElement('table');
 		tblCharacter.className="tblCharacters"
-	var tbodyCharacter = document.createElement('tbody');	
-	var trCharacter = document.createElement('tr');
+	let tbodyCharacter = document.createElement('tbody');	
+	let trCharacter = document.createElement('tr');
 	
-	for(character in chapter){
+	for(let character in chapter){
 		//console.info(character)
 		const objCharacter=chapter[character]
 		if(typeof objCharacter === 'object'){
 			//console.info(objCharacter)
-			var tdCharacter = document.createElement('td');
-			var aCharacter = document.createElement('a');
+			let tdCharacter = document.createElement('td');
+			let aCharacter = document.createElement('a');
 				aCharacter.id=character;
 				aCharacter.addEventListener('click', function () {
 					getSkills(objCharacter); //Event listeners to change characters
 				});
 				
-			var imgCharacter = document.createElement('img');
+			let imgCharacter = document.createElement('img');
 				imgCharacter.src = "Images/Sprites/"+objCharacter.Image+".gif"
 				imgCharacter.alt = objCharacter.Name;
 			
@@ -63,8 +63,8 @@ function getCharacters(chapter){
 	tbodyCharacter.appendChild(trCharacter)
 	tblCharacter.appendChild(tbodyCharacter)
 	
-	var loc = document.getElementById("divCharacter")
-	var oldCharList=document.getElementsByClassName("tblCharacters")[0]
+	let loc = document.getElementById("divCharacter")
+	let oldCharList=document.getElementsByClassName("tblCharacters")[0]
 	if(oldCharList){
 		loc.removeChild(oldCharList);
 	}
@@ -75,70 +75,70 @@ function getSkills(character){
 	console.info(character)
 	
 	//Change sprite of selected character here
-	var curCharacter= document.getElementById("currentSelected")
+	let curCharacter= document.getElementById("currentSelected")
 	curCharacter.src="Images/Sprites/" + character.Image + ".gif"
 	curCharacter.alt= character.Name
 	
 	//Make skill list here
-	var tblSkill = document.createElement('table');
+	let tblSkill = document.createElement('table');
 		tblSkill.className="tblSkills"
-	var tbodySkill = document.createElement('tbody');	
+	let tbodySkill = document.createElement('tbody');	
 	
-	for(skill in character){
-		const Skill = character[skill]
-		console.info(Skill)
-		if(typeof Skill === 'object'){
+	for(let characterSkill in character){
+		const skill = character[characterSkill]
+		console.info(skill)
+		if(typeof skill === 'object'){
 			
-			Skill.forEach(function(arraySkill){
+			skill.forEach(function(arraySkill){
 				
-				var check_Mastered = false
-				var identifier = character.Name+"_"+arraySkill.Name
-				var getStatus = localStorage.getItem(identifier);
-				if (getStatus == "true") 
+				let checkMastered = false
+				let identifier = character.Name+"_"+arraySkill.Name
+				let getStatus = localStorage.getItem(identifier);
+				if (getStatus === "true")
 				{
-					check_Mastered = true;
-					console.info(check_Mastered);
+					checkMastered = true;
+					console.info(checkMastered);
 				}
 				else{
-					check_Mastered = arraySkill.Mastered
+					checkMastered = arraySkill.Mastered
 					console.info(getStatus);
 				}
 				
-				var trSkill = document.createElement('tr');
+				let trSkill = document.createElement('tr');
 				
-				var tdSkillType = document.createElement('td');
-				var tdSkillName = document.createElement('td');
-				var tdSkillFound = document.createElement('td');
-				var tdSkillMastered = document.createElement('td');
+				let tdSkillType = document.createElement('td');
+				let tdSkillName = document.createElement('td');
+				let tdSkillFound = document.createElement('td');
+				let tdSkillMastered = document.createElement('td');
 				
 				
-				var TypeImg= document.createElement('img');
-					TypeImg.src = "Images/Skills/" + arraySkill.Type + ".png";
-					TypeImg.alt = arraySkill.Type;
-				var Name = document.createTextNode(arraySkill.Name);
-				var Found = document.createTextNode(arraySkill.Found);
-				var MasteredImg = document.createElement('img');
-					MasteredImg.src = "Images/Others/Mastered_" + check_Mastered + ".png";
-					MasteredImg.alt = check_Mastered;
+				let typeImg= document.createElement('img');
+					typeImg.src = "Images/Skills/" + arraySkill.Type + ".png";
+					typeImg.alt = arraySkill.Type;
+				let name = document.createTextNode(arraySkill.Name);
+				let found = document.createTextNode(arraySkill.Found);
+				let masteredImg = document.createElement('img');
+					masteredImg.src = "Images/Others/Mastered_" + checkMastered + ".png";
+					masteredImg.alt = checkMastered;
 					
 					
-				var aMastered = document.createElement('a'); //change this to input type checkbox and a label with the image in?
+				let aMastered = document.createElement('a'); //change this to input type checkbox and a label with the image in?
 					// aMastered.id=chapter;
 					aMastered.addEventListener('click', function () {
-						console.info(check_Mastered)
-						saveMastered(character.Name, arraySkill.Name, check_Mastered, MasteredImg); //Event listeners to change chapters
-						check_Mastered=!check_Mastered
+						console.info(checkMastered)
+						saveMastered(character.Name, arraySkill.Name, checkMastered, masteredImg); //Event listeners to change chapters
+						checkMastered=!checkMastered
 						
-						MasteredImg.src = "Images/Others/Mastered_" + check_Mastered + ".png";
-						MasteredImg.alt = check_Mastered;
+						masteredImg.src = "Images/Others/Mastered_" + checkMastered + ".png";
+						masteredImg.alt = checkMastered;
 					});
 				
 				
-				tdSkillType.appendChild(TypeImg)
-				tdSkillName.appendChild(Name)
-				tdSkillFound.appendChild(Found)
+				tdSkillType.appendChild(typeImg)
+				tdSkillName.appendChild(name)
+				tdSkillFound.appendChild(found)
 				
-				aMastered.appendChild(MasteredImg)
+				aMastered.appendChild(masteredImg)
 				tdSkillMastered.appendChild(aMastered)
 				
 				trSkill.appendChild(tdSkillType)
@@ -153,8 +153,8 @@ function getSkills(character){
 
 	tblSkill.appendChild(tbodySkill)
 	
-	var loc = document.getElementById("divSkillList")
-	var oldSkillList=document.getElementsByClassName("tblSkills")[0]
+	let loc = document.getElementById("divSkillList")
+	let oldSkillList=document.getElementsByClassName("tblSkills")[0]
 	if(oldSkillList){
 		loc.removeChild(oldSkillList);
 	}
@@ -165,10 +165,10 @@ function saveMastered(character, skill, mastered){
 	console.info(character, skill, mastered) //KidMardek Strike false //ch2Mardek Warp true
 	
 	if(mastered===true){
-		localStorage.setItem(character+"_"+skill, false)
+		localStorage.setItem(character+"_"+skill, "false")
 	}
 	else{
-		localStorage.setItem(character+"_"+skill, true)		
+		localStorage.setItem(character+"_"+skill, "true")
 	}
 }
 

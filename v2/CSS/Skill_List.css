@@ -3,7 +3,7 @@
 	height: 100%;
 	top: calc(0% + 112px);
 	width: 100%;
-	left: 0px;
+	left: 0;
 	background: -moz-linear-gradient(bottom,#885C40,#AB561A,#B14C14,#380F07);
 	background: -o-linear-gradient(bottom,#885C40,#AB561A,#B14C14,#380F07);
 	background: -webkit-linear-gradient(top,#885C40,#AB561A,#B14C14,#380F07);
@@ -17,8 +17,8 @@ div#selectionDiv{
 	justify-content: space-between;
 	height:90px;
 	padding:10px;
-	left:0px;
-	top:0px;
+	left:0;
+	top:0;
 	background:#180E0A;
 	border-bottom:2px solid #53371C;
 	color:#EFCB7F;
@@ -50,7 +50,7 @@ td{
 	padding-right: 20px;
 }
 
-.tblcharacters{
+.tblCharacters{
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -68,21 +68,17 @@ td{
 .tblSkills{
 	left:120px;
 	position: relative;
-	margin-top:  160px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 200px;
-	border-spacing: 0px;
+	margin: 160px auto 200px;
+	border-spacing: 0;
 	border-collapse: collapse;
-	font-family: verdana;
+	font-family: verdana, serif;
 	font-size: 18px;
 	
 	width:850px;
 }
 
 .tblSkills td{
-	border: solid;
-	border-width: 2px;
+	border: 2px solid;
 	padding: 5px;
 }
 
@@ -100,7 +96,7 @@ td{
 	background:rgba(83,65,39,0.8);
 }
 
-/* div.helptext */
+/* div.helpText */
 /* { */
 	/* position:absolute; */
 	/* right:calc(46%); */
@@ -112,7 +108,7 @@ td{
 {
 	position: fixed;
 	top: 280px;
-	left: 280;	
+	left: 280px;
 }
 .chosenChar img
 {
