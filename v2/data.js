@@ -2,7 +2,7 @@ const MARDEK = {
 	Chapter1: {
 		Image: "Chapter1",
 		Mardek: {
-			Image:"KidMardek",
+			Image:"kidMardek",
 			Name:"KidMardek",
 			Skills:[
 				{Type: "Imagination", Name: "Strike", Found: "Stick", Mastered: false},
@@ -13,7 +13,7 @@ const MARDEK = {
 			]
 		},
 		Deugan: {
-			Image:"KidDeugan",
+			Image:"kidDeugan",
 			Name:"KidDeugan",
 			Skills:[
 				{Type: "Imagination", Name: "Strike", Found: "Big Stick", Mastered: false},
